@@ -35,4 +35,19 @@ class task:
         plt.show()
 
         return price_range_counts, price_range_percentage
+    def Level_1_Task4(self,data:pd.DataFrame):
+        #find the required columns for the task
+        required_columns = ['restaurant_id', 'has_online_delivery', 'aggregate_rating']
+        for column in required_columns:
+            if column not in data.columns:
+                raise KeyError(f"column '{column} not found in Dataframe. ")
+        #calculate percentage of resturants that has online delivery
+        online_delivey_count = data['has_online_delivery'].value_counts()
+        total_restaurant = data['restaurant_id'].nunique()
+        online_delivery_percentage = (online_delivey_count/total_restaurant) * 100
+
+        #calculate avg rating of resturant 
+        avg_rating_with_delivery = data[data['has_online_delivery'] == 'Yes']['aggregate_rating'].mean()
+        avg_rating_with_out_delivery = data[data['has_online_delivery'] == 'No']['aggregate_rating'].mean()
+        return online_delivery_percentage,avg_rating_with_delivery,avg_rating_with_out_delivery
 
