@@ -10,7 +10,7 @@ class LevelThreeTasks:
 
     def analyze_reviews(self):
         """Analyze reviews to find common positive and negative keywords and explore review length."""
-        # Assuming a 'reviews' column exists in the dataset
+        
         if 'rating_text' not in self.data.columns:
             print("No 'rating_text' column found in the dataset.")
             return None, None
